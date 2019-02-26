@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
+import javax.xml.crypto.Data;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -110,7 +112,31 @@ public class JavaListTest {
 	}
 	
 	// TODO: test list remove
+	
+	
 	// TODO test addIndex methods.
+	// addIndex tests start from here: 
+	
+	@Test(expected=BadIndexError.class)
+	public void testAddIndex() {
+		ListADT<String> data = makeFullList();
+		data.addIndex(5, "whoops");
+	}
+	
+	@Test(expected=BadIndexError.class)
+	public void testAddIndexRepeated() {
+		ListADT<String> emptyData = makeEmptyList();
+		emptyData.addIndex(-4, "whoops pt. 2");
+	}
+	
+	@Test
+	public void testAddIndexRepeatedAgain() {
+		ListADT<String> data = makeFullList();
+		data.addIndex(3, "d");
+	}
+	
+	// addIndex tests end here. 
+	
 	
 	@Test
 	public void testGetFront() {
@@ -172,10 +198,22 @@ public class JavaListTest {
 		data.addIndex(-1, "the");
 	}
 	
-	// TODO write some tests for setIndex.
+	// TODO write some tests for setIndex. (done)
+	
+	@Test (expected=BadIndexError.class)
+	public void testSetIndex() {
+		ListADT<String> data = makeFullList();
+		data.setIndex(5, "whoops");
+	}
+	
+	@Test
+	public void testSetIndexRepeated() {
+		ListADT<String> data = makeFullList();
+		data.setIndex(2, "d");
+	}
 	
 	@Test
 	public void testToJava() {
-		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "d", "d"));
+		assertEquals(makeFullList().toJava(), Arrays.asList("a", "b", "c", "d"));
 	}
 }

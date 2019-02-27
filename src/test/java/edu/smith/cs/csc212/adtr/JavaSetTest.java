@@ -2,8 +2,10 @@ package edu.smith.cs.csc212.adtr;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Test;
 
+import edu.smith.cs.csc212.adtr.real.JavaList;
 import edu.smith.cs.csc212.adtr.real.JavaSet;
 
 public class JavaSetTest {
@@ -61,9 +63,29 @@ public class JavaSetTest {
 		assertEquals(intList.size(), 1);
 	}
 	
-//	@Test
-//	public void testToList() {
-//		SetADT<Integer> intList = new JavaSet<>();
-//		assertEquals(intList.toList().getClass(), ListADT.class);
-//	}
+	@Test
+	public void testToJava() {
+		SetADT<Integer> intSet = new JavaSet<>();
+		intSet.insert(1);
+		intSet.insert(2);
+		intSet.insert(3); 
+		intSet.insert(4); 
+		Assert.assertTrue(intSet.contains(2) && intSet.toJava().contains(2));
+		
+	}
+	@Test
+	public void testToList() {
+		SetADT<Integer> intSet = new JavaSet<>();
+		intSet.insert(1);
+		intSet.insert(2);
+		intSet.insert(3); 
+		intSet.insert(4); 
+		ListADT<Integer> listJava = new JavaList<>();
+		listJava.toJava().addAll(intSet.toJava());
+		for (int i = 0; i < listJava.size(); i++) {
+			assertEquals(intSet.toList().toJava().get(i), listJava.getIndex(i));
+		}
+	}
+	
+	
 }

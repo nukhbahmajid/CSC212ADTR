@@ -112,6 +112,49 @@ public class JavaListTest {
 	}
 	
 	// TODO: test list remove
+	// remove tests start here
+	
+	@Test(expected=EmptyListError.class) 
+	public void testRemoveBack() {
+		ListADT<String> empty = makeEmptyList();
+		empty.removeBack();
+	}
+	
+	@Test
+	public void testRemoveBack1() {
+		ListADT<String> data = makeFullList();
+		data.removeBack();
+		assertEquals("c", data.getBack());
+	}
+	
+	@Test(expected=EmptyListError.class) 
+	public void testRemoveFront() {
+		ListADT<String> empty = makeEmptyList();
+		empty.removeFront();
+	}
+	
+	@Test
+	public void testRemoveFront1() {
+		ListADT<String> data = makeFullList(); 
+		data.removeFront();
+		assertEquals("b", data.getFront());
+	}
+	
+	@Test(expected=EmptyListError.class)
+	public void testRemoveIndex() {
+		ListADT<String> empty = makeEmptyList();
+		empty.removeIndex(3);
+	}
+	
+	@Test
+	public void testRemoveIndex1() {
+		ListADT<String> data = makeFullList();
+		data.removeIndex(1);
+		assertEquals(3, data.size());
+		assertEquals("c", data.getIndex(1));
+	}
+	
+	// remove tests end here 
 	
 	
 	// TODO test addIndex methods.
@@ -133,6 +176,7 @@ public class JavaListTest {
 	public void testAddIndexRepeatedAgain() {
 		ListADT<String> data = makeFullList();
 		data.addIndex(3, "d");
+		assertEquals("d", data.getBack()); 
 	}
 	
 	// addIndex tests end here. 

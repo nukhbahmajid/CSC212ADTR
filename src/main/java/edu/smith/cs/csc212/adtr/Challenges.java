@@ -90,16 +90,21 @@ public class Challenges {
 	public static MapADT<String, Integer> wordCount(ListADT<String> words) {
 		MapADT<String, Integer> output = new JavaMap<>();
 		List<String> wordsJavaList = words.toJava();
-		for (int i = 0; i < wordsJavaList.size(); i++) {
+		int sizeWordsList = wordsJavaList.size();
+		for (int i = 0; i < sizeWordsList; i++) {
 			String aWord = wordsJavaList.get(i);
 			int count = 1;
+			wordsJavaList.remove(i);
 			wordsJavaList.add(i, null);
 			for (int j= 0; j < wordsJavaList.size(); j++) {
-				if(wordsJavaList.get(j) == aWord && !(output.getKeys().toJava().contains(aWord))) {
+				if(wordsJavaList.get(j) == aWord) {
 					count += 1;
 				} else {}
 			}
-			output.put(aWord, (Integer) count);
+			if (!(output.getKeys().toJava().contains(aWord))) {
+				output.put(aWord, (Integer) count);
+			}
+			
 		}
 		return output;
 	}

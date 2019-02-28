@@ -89,6 +89,17 @@ public class Challenges {
 	// Count the words in the input list and put them in the map.
 	public static MapADT<String, Integer> wordCount(ListADT<String> words) {
 		MapADT<String, Integer> output = new JavaMap<>();
+		
+// JJ's solution below: 		
+		
+//		for (String wi : words) {
+//			Integer prevCount = output.get(wi);
+//			if (prevCount == null) {
+//				prevCount = 0;
+//			}
+//			output.put(wi, prevCount + 1);
+//		}
+		
 		List<String> wordsJavaList = words.toJava();
 		int sizeWordsList = wordsJavaList.size();
 		for (int i = 0; i < sizeWordsList; i++) {

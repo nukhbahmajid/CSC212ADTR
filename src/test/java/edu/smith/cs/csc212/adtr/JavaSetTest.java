@@ -83,7 +83,7 @@ public class JavaSetTest {
 		ListADT<Integer> listJava = new JavaList<>();
 		listJava.toJava().addAll(intSet.toJava());
 		for (int i = 0; i < listJava.size(); i++) {
-			assertEquals(intSet.toList().toJava().get(i), listJava.getIndex(i));
+			assertEquals(intSet.toList().getIndex(i), listJava.getIndex(i));
 		}
 	}
 	
